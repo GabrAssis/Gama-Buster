@@ -4,25 +4,25 @@ CREATE TABLE filme (
 	id_filme			INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nome_filme			VARCHAR (45) NOT NULL,
 	genero				VARCHAR(45) NOT NULL,
-	ano_lancamento		YEAR NOT NULL,
+	ano_lancamento			YEAR NOT NULL,
 	duracao				TIME NOT NULL,
 	estoque				INTEGER
 );
 
 CREATE TABLE cliente (
 	id_cliente			INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	nome_sobrenome		VARCHAR (100) NOT NULL,
-	cpf					VARCHAR(20) NOT NULL,
-	endereco_completo	VARCHAR (100) NOT NULL,
+	nome_sobrenome			VARCHAR (100) NOT NULL,
+	cpf				VARCHAR(20) NOT NULL,
+	endereco_completo		VARCHAR (100) NOT NULL,
 	telefone			TIME NOT NULL,
 	email				VARCHAR (45) NOT NULL,
-	data_aniversario	DATE NOT NULL
+	data_aniversario		DATE NOT NULL
 );
 
 CREATE TABLE reserva (
 	id_reserva			INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	data_reserva		DATE,
-	data_devolucao		DATE,
+	data_reserva			DATE,
+	data_devolucao			DATE,
 	desconto			DOUBLE,
 	valor_bruto			DOUBLE,
 	valor_final			DOUBLE,
@@ -32,14 +32,14 @@ CREATE TABLE reserva (
 );
 
 CREATE TABLE item_reserva (
-	num_sequencial		INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	num_sequencial			INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	id_filme 			INTEGER NOT NULL,
 	id_reserva 			INTEGER NOT NULL,
 	quantidade			INTEGER,
-	valor_unitario		DOUBLE,
+	valor_unitario			DOUBLE,
 	valor_total			DOUBLE,
-	CONSTRAINT id_reserva_filme FOREIGN KEY
+		CONSTRAINT id_reserva_filme FOREIGN KEY
 			(id_filme) REFERENCES filme(id_filme),
-	CONSTRAINT id_reserva FOREIGN KEY
+		CONSTRAINT id_reserva FOREIGN KEY
 			(id_reserva) REFERENCES reserva(id_reserva)
 );
